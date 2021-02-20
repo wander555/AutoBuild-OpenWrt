@@ -11,9 +11,9 @@ on:
   release:
     types: [published]
 
-  #push:
-  #  branches: 
-  #    - master
+  push:
+    branches: 
+      - master
 
   #schedule:
   #  - cron: 0 8 * * 5
@@ -73,9 +73,12 @@ jobs:
         ./scripts/feeds install -a
         ./scripts/feeds install -a
 
-    #- name: Import external feeds
-    #  working-directory: ./openwrt
-    #  run: |
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+         git clone https://github.com/kenzok8/openwrt-packages.git package/lienol
+         git clone https://github.com/kenzok8/small package/lienol
+
     #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"      
 
